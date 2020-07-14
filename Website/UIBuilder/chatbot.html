@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #202B33;
+}
+
+h1, p {
+	font-family: sans-serif, cursive;
+	text-align: center;
+	color: #ffffff;
+	font-size:  100px;
+}
+
+p {
+	font-size: 15px;
+}
+
+#output, #container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+input {
+    background-color: #eee;
+    border: none;
+    font-family: sans-serif;
+    color: #000;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+}
+
+</style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="https://node-red-aftnm.eu-gb.mybluemix.net/uibuilder/home.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://node-red-gaurav.eu-gb.mybluemix.net/ui/#!/0?socketid=RENvfV0W6yQzxBRfAAAB">Predictions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://node-red-aftnm.eu-gb.mybluemix.net/uibuilder/dashboard.html">Meal Analysis</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://node-red-gaurav.eu-gb.mybluemix.net/ui/#!/1?socketid=L_7hlS9-yQzNga2FAAAH">FeedBack</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://node-red-aftnm.eu-gb.mybluemix.net/uibuilder/sentiment.html">Sentiment Analysis</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- partial:index.partial.html -->
+<div id="output"></div>
+
+<div id="container">
+    <input type="text" id="input" value="">
+</div>
+
+<!-- jquery for enter key press -->
+<script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
+<!-- partial -->
+  <script>
+  var questionNum = 0;													// keep count of question, used for IF condition.
+  var question = '<h1>Greetings! What is your name?</h1>';				  // first question
+
+  var output = document.getElementById('output');				// store id="output" in output variable
+  output.innerHTML = question;													// ouput first question
+
+  function bot() {
+      var input = document.getElementById("input").value;
+      console.log(input);
+
+      if (questionNum == 0) {
+      output.innerHTML = '<h1>Hello ' + input + '! Which meal would you like to know about?</h1>';// output response
+      document.getElementById("input").value = "";   		// clear text box		    	// load next question
+      setTimeout(timedQuestion, 2000000);									// output next question after 2sec delay
+      }
+
+      else if (questionNum == 1) {
+      output.innerHTML = '<h1>That estimated number of orders in next week for ' + input + ' is 234.</h1>';
+      document.getElementById("input").value = "";
+      }
+      else if (questionNum == 2) {
+      output.innerHTML = '<h1>Is there anything else that you want to know ?</h1>';
+      document.getElementById("input").value = "";
+      setTimeout(timedQuestion, 2000000);
+      }
+      else if (questionNum == 3) {
+      output.innerHTML = '<h1>The center has 130 meals and the orders is 234.Need to prepare 134 more!</h1>';
+      document.getElementById("input").value = "";
+      setTimeout(timedQuestion, 2000000);
+      }
+      else if (questionNum == 4) {
+      output.innerHTML = '<h1>Thank You!</h1>';
+      document.getElementById("input").value = "";
+      setTimeout(timedQuestion2, 700000);
+      }
+  }
+
+  function timedQuestion() {
+      output.innerHTML = question;
+  }
+
+  function timedQuestion2() {
+      output.innerHTML = "<h1>I'm your Virtual Assistant</h1>";
+  }
+  //push enter key (using jquery), to run bot function.
+  $(document).keypress(function(e) {
+    if (e.which == 13) {
+      bot();																						// run bot function when enter key pressed
+      questionNum++;																		// increase questionNum count by 1
+    }
+  });
+  </script>
+</body>
+</html>
