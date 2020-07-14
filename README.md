@@ -8,6 +8,9 @@ References:
 1. https://www.kaggle.com/kannanaikkal/food-demand-forecasting
 2. https://www.altexsoft.com/blog/demand-forecasting-methods-using-machine-learning/
 
+Video of Entire Project:
+https://drive.google.com/file/d/1pGqYNTIbqY6wKc86Bo1mrlXKBKqnnFr5/view?usp=sharing
+
 For Website:
 1. Download the Website folder
 2. Open your IBM Node-Red Dashboard
@@ -35,5 +38,4 @@ For Website:
 
 The catboost_1(1).csv is the final Prediction File generated after testing the ML Model.
 
-The video explains the complete project
 The PPT gives all the details of the project and is to be used for the final presentation.
