@@ -36,6 +36,12 @@ For Website:
 	Open URL according to your NodeRed URL and add '/uibuilder/home.html' to the URL.
 20. The entire website is ready and working on your webpage
 
-The catboost_1(1).csv is the final Prediction File generated after testing the ML Model.
+The Machine Learning Prediction Model dataset is available in the "Prediction Model" Folder
+"train.csv, meal_info.csv, fulfilment_center_info.csv, test.csv" are the files used for training and testing the model.
+The "catboost_1(1).csv" is the final Prediction File generated after testing the ML Model.
+The "Food Demand Forecasting using CatBoost.ipynb" file is the ML code for Catboost Model.
+The "Food Demand with Gradient Boosting.ipynb" file contains the ML code for Gradient Boosting Model
 
-The PPT gives all the details of the project and is to be used for the final presentation.
+The "IBM Hack2020 PPT.pptx" PPT gives all the details of the project and is to be used for the final presentation.
+
+The "SBSPS_Challenge_4509.pdf" file contains the final project report.
